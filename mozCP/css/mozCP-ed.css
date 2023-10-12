@@ -1,0 +1,293 @@
+﻿* { box-sizing: border-box; }
+html,body,*{
+  margin:0;
+  padding:0;
+  border-width:0;
+  
+}
+.ui-color-picker {
+    padding: 5px;
+}
+
+#picker {
+    background: rgba(0,0,0,.4);
+    padding: 5px;
+    width: 227px; width: 237px;
+}
+
+.ui-color-picker {
+    width: 213px; width: 223px;
+    margin: 0;
+    border-radius: 4px;
+    display: table;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-shadow: 0 5px 10px 0 #eee,0 -4px 10px 0 #eee
+}
+
+#moz_picker {
+    padding: 3px;
+    background-color: rgba(0,0,0,.7);
+    width: 236px; width: 241px;
+    border-radius:6px
+/*    box-shadow: 0 5px 10px 0 #444,0 1px 1px 0 #111*/
+}
+
+.ui-color-picker .picking-area {
+    width: 99px;
+    height: 99px;
+    margin: 6px 3px 3px;
+    border: 1px solid #ddd;
+    position: relative;
+    float: left;
+    display: table;
+    background: url(../images/picker_mask_w100h100.png) center center;
+    background: -moz-linear-gradient(bottom,#000 0%,transparent 100%),-moz-linear-gradient(left,#fff 0%,rgba(255,255,255,0) 100%);
+    background: -webkit-linear-gradient(bottom,#000 0%,transparent 100%),-webkit-linear-gradient(left,#fff 0%,rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(bottom,#000 0%,transparent 100%),-ms-linear-gradient(left,#fff 0%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(bottom,#000 0%,transparent 100%),-o-linear-gradient(left,#fff 0%,rgba(255,255,255,0) 100%)
+}
+
+.ui-color-picker .picking-area:hover {
+    cursor: default
+}
+
+.ui-color-picker[data-mode=HSL] .picking-area {
+    background: -moz-linear-gradient(top,#fff 0%,rgba(255,255,255,0) 50%,transparent 50%,#000 100%),-moz-linear-gradient(left,gray 0%,rgba(128,128,128,0) 100%);
+    background: -webkit-linear-gradient(top,#fff 0%,rgba(255,255,255,0) 50%,transparent 50%,#000 100%),-webkit-linear-gradient(left,gray 0%,rgba(128,128,128,0) 100%);
+    background: -ms-linear-gradient(top,#fff 0%,rgba(255,255,255,0) 50%,transparent 50%,#000 100%),-ms-linear-gradient(left,gray 0%,rgba(128,128,128,0) 100%);
+    background: -o-linear-gradient(top,#fff 0%,rgba(255,255,255,0) 50%,transparent 50%,#000 100%),-o-linear-gradient(left,gray 0%,rgba(128,128,128,0) 100%)
+}
+
+.ui-color-picker .picker,.ui-color-picker .picker:before {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    position: absolute;
+    top: 45%;
+    left: 45%
+}
+
+.ui-color-picker .picker:before {
+    width: 12px;
+    height: 12px;
+    content: "";
+    background-image: url(../images/jscbg1.gif);
+    background-repeat: no-repeat;
+    background-size: 12px 12px;
+    border: 1px solid #000;
+    top: -3px;
+    left: -2px
+}
+
+.ui-color-picker .picker:active {
+    border: 0;
+    cursor: pointer
+}
+
+.ui-color-picker .picker:active:before {
+    width: 8px;
+    height: 8px;
+    top: 0;
+    left: 1px;
+    background-size: 10px 10px;
+    border: 1px solid #000;
+}
+
+.picker_grid {
+    position: relative
+}
+
+.ui-color-picker .hue {
+    width: 99px;
+    border: 1px solid #fff;
+    float: left
+}
+
+.ui-color-picker .alpha {
+    height: 18px;
+    float: left;
+    width: 198px;
+    margin: 3px 0 2px 7px
+}
+
+.ui-color-picker .hue {
+    margin: 6px 1px 3px 4px;
+    height: 26px;
+    background: url(../images/hue_w100h20.png) center;
+    background: -moz-linear-gradient(left,red 0%,#ff0 16.66%,#0f0 33.33%,#0ff 50%,#00f 66.66%,#f0f 83.33%,red 100%);
+    background: -webkit-linear-gradient(left,red 0%,#ff0 16.66%,#0f0 33.33%,#0ff 50%,#00f 66.66%,#f0f 83.33%,red 100%);
+    background: -ms-linear-gradient(left,red 0%,#ff0 16.66%,#0f0 33.33%,#0ff 50%,#00f 66.66%,#f0f 83.33%,red 100%);
+    background: -o-linear-gradient(left,red 0%,#ff0 16.66%,#0f0 33.33%,#0ff 50%,#00f 66.66%,#f0f 83.33%,red 100%);
+    cursor: hand;
+    cursor: pointer
+}
+
+.ui-color-picker .alpha {
+    border: 1px solid #ccc;
+    background: url(../images/alpha.png)
+}
+
+.ui-color-picker .alpha-mask {
+    width: 100%;
+    height: 100%;
+    background: url(../images/alpha_mask.png);
+    cursor: hand;
+    cursor: pointer
+}
+
+.ui-color-picker .slider-picker {
+    width: 4px;
+    height: 100%;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    position: relative;
+    top: -1px;
+}
+
+.ui-color-picker .input {
+    width: 64px;
+    margin: 5px 2px;
+    float: left
+}
+
+.ui-color-picker .input .name {
+    color: #eee;
+    height: 16px;
+    width: 30px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 14px;
+    float: left
+}
+
+.ui-color-picker .input input {
+    width: 30px;
+    height: 14px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ddd;
+    text-align: center;
+    float: right;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text
+}
+
+.ui-color-picker .input[data-topic=lightness],.ui-color-picker[data-mode=HSL] .input[data-topic=value] {
+    display: none
+}
+
+.ui-color-picker[data-mode=HSL] .input[data-topic=lightness] {
+    display: block
+}
+
+.ui-color-picker .input[data-topic=alpha] {
+    margin-top: 10px;
+    width: 93px
+}
+
+.ui-color-picker .input[data-topic=alpha]>.name {
+    width: 60px
+}
+
+.ui-color-picker .input[data-topic=alpha]>input {
+    float: right
+}
+
+.ui-color-picker .input[data-topic=hexa] {
+    width: auto;
+    float: right;
+    margin: 6px 8px 0 0
+}
+
+.ui-color-picker .input[data-topic=hexa]>.name,[data-hidden=true] {
+    display: none
+}
+
+.ui-color-picker .input[data-topic=hexa]>input {
+    width: 90px;
+    height: 24px;
+    padding: 2px 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.ui-color-picker .preview {
+    width: 95px;
+    height: 53px;
+    margin: 10px 5px 5px;
+    border: 1px solid #ddd;
+    background-image: url(../images/alpha.png);
+    float: left;
+    position: relative
+}
+
+.ui-color-picker .preview:before {
+    height: 100%;
+    width: 50%;
+    left: 50%;
+    top: 0;
+    content: "";
+    background: #fff;
+    position: absolute;
+    z-index: 1
+}
+
+.ui-color-picker .preview-color {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,0,0,.5);
+    position: absolute;
+    z-index: 1
+}
+
+.ui-color-picker .switch_mode {
+    width: 10px;
+    height: 20px;
+    position: relative;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ddd;
+    background-color: #eee;
+    left: -12px;
+    top: -1px;
+    z-index: 1;
+    transition: all .5s
+}
+
+.ui-color-picker .switch_mode:hover {
+    background-color: #ccc;
+    cursor: pointer
+}
+
+[data-resize=both]:hover {
+    cursor: nw-resize!important
+}
+
+[data-resize=width]:hover {
+    cursor: w-resize!important
+}
+
+[data-resize=height]:hover {
+    cursor: n-resize!important
+}
+
+[data-collapsed=true] {
+    height: 0!important
+}
+
+.ui-color-picker .switch_mode {
+    display: none
+}
+
+.ui-color-picker {
+    border: 1px solid #000
+}
+
+.block {
+    display: table
+}
